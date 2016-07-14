@@ -1,0 +1,47 @@
+﻿@model Blog.Entities.Article
+
+@{
+    ViewBag.Title = "Админ панель. Редактирование статьи";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Редактирование статьи «@Model.NameArticle»</h3>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        <div class="panel-body">
+            @Html.HiddenFor(m => m.ArticleID)
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                if (property.PropertyName != "ArticleID" && property.PropertyName != "Comments")
+                {
+                    <div class="form-group">
+                        <label>@(property.DisplayName ?? property.PropertyName)</label>  
+                        @if (property.PropertyName == "TextArticle")
+                        {
+                            @Html.TextArea(property.PropertyName, null, 
+                                new { @class = "form-control", row = 25})
+                        }
+                        else
+                        {
+                            @Html.TextBox(property.PropertyName, null, 
+                                new { @class = "form-control"})
+                        }
+                        @Html.ValidationMessage(property.PropertyName)
+                    </div>
+                }
+            }
+        </div>
+        <div class="panel-footer">
+            <input type="submit" value="Сохранить" class="btn btn-primary" />
+            @Html.ActionLink("Отменить изменения и вернуться к списку", "Index", null, new
+            {
+                @class = "btn btn-default"
+            })
+        </div>
+    }
+</div>
+

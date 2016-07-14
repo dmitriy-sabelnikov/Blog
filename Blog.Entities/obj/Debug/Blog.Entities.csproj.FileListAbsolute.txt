@@ -1,0 +1,7 @@
+C:\Blog\Blog.Entities\bin\Debug\Blog.Entities.dll
+C:\Blog\Blog.Entities\bin\Debug\Blog.Entities.pdb
+C:\Blog\Blog.Entities\obj\Debug\Blog.Entities.dll
+C:\Blog\Blog.Entities\obj\Debug\Blog.Entities.pdb
+C:\Blog\Blog.Entities\bin\Debug\Castle.Core.dll
+C:\Blog\Blog.Entities\bin\Debug\Castle.Core.xml
+C:\Blog\Blog.Entities\obj\Debug\Blog.Entities.csprojResolveAssemblyReference.cache

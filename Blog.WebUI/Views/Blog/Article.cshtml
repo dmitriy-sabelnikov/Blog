@@ -1,0 +1,31 @@
+﻿@using Blog.Entities
+
+@model Blog.Entities.Article
+
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        UpdateTargetId = "Comments"
+    };
+    ViewBag.Title = @Model.NameArticle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<article>
+    <header>
+        <h2>@Model.NameArticle</h2>
+    </header>
+    <div>@Model.TextArticle</div>
+    <h2>Комментарии</h2>
+    <div id="Comments">
+        @Html.Partial("Comments", @Model.Comments)
+    </div>
+    @using (Ajax.BeginForm("SetCommets", ajaxOptions))
+    {
+        @Html.Hidden("articleId", @Model.ArticleID)
+        @Html.TextArea("Comment")
+        <input type="submit" value="Добавить комментарий">
+    }
+    <footer>
+        @Html.ActionLink("Назад", "Index")
+    </footer>
+</article>

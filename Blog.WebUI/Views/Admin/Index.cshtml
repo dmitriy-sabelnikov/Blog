@@ -1,0 +1,56 @@
+﻿@using Blog.WebUI.HtmlHelpers
+@using Blog.Entities
+@model Blog.WebUI.Models.ArticleListViewModel
+
+@{
+    ViewBag.Title = "Админ. панель";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="panel panel-default">
+    <div class="panel-heading table-striped">
+        <h3>Список статтей</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th class="text-center">ID</th>
+                <th>Автор</th>
+                <th class="text-center">Наименование статьи</th>
+                <th class="text-center">Действия</th>
+            </tr>
+            @foreach (Article article in @Model.Articles)
+            {
+                <tr>
+                    <td class="text-center">@article.ArticleID</td>
+                    <td>@article.Author</td>
+                    <td>@Html.ActionLink(article.NameArticle, "Edit", new { article.ArticleID })</td>
+                    <td class="text-center">
+                        @using (Html.BeginForm("Delete", "Admin"))
+                        {
+                            @Html.Hidden("articleID", article.ArticleID)
+                            @Html.Hidden("currentPage", Model.PageInfo.CurrentPage)
+                            <input type="submit"
+                                   class="btn btn-default btn-xs"
+                                   value="Удалить" />
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="panel-footer">
+        @using (Html.BeginForm("Edit", "Admin"))
+        {
+            @Html.ActionLink("Добавить статью", "Create", null,
+                new { @class = "btn btn-default" })
+        }       
+        @Html.ActionLink("Вернуться в пользовательское окно", "Index", "Blog")
+
+    </div>
+    <div>
+        @Html.PageLink(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+    </div>
+</div>
+
+
+

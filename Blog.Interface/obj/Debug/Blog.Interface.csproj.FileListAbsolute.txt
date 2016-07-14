@@ -1,0 +1,7 @@
+C:\Blog\Blog.Interface\obj\Debug\Blog.Interface.csprojResolveAssemblyReference.cache
+C:\Blog\Blog.Interface\bin\Debug\Blog.Interface.dll
+C:\Blog\Blog.Interface\bin\Debug\Blog.Interface.pdb
+C:\Blog\Blog.Interface\bin\Debug\Blog.Entities.dll
+C:\Blog\Blog.Interface\bin\Debug\Blog.Entities.pdb
+C:\Blog\Blog.Interface\obj\Debug\Blog.Interface.dll
+C:\Blog\Blog.Interface\obj\Debug\Blog.Interface.pdb

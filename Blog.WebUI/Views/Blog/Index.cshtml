@@ -1,0 +1,22 @@
+﻿@using Blog.WebUI.Models
+@using Blog.WebUI.HtmlHelpers
+@using Blog.Entities
+
+@model ArticleListViewModel
+
+@{
+    ViewBag.Title = "Блог статей";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@foreach (Article article in @Model.Articles)
+{
+    <div>
+        <h2>@Html.ActionLink(@article.NameArticle, "Article", new { article.ArticleID })</h2> 
+        <p>@article.TextArticle</p>
+    </div>
+    @Html.ActionLink("Читать далее", "Article", new { article.ArticleID })
+}
+
+<div>
+    @Html.PageLink(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+</div>

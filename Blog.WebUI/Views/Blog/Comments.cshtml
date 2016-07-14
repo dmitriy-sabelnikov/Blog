@@ -1,0 +1,7 @@
+﻿@using Blog.Entities
+@model IEnumerable<Comment>
+
+@foreach (Comment comment in @Model)
+{
+    <div>@comment.TextComment</div>
+}
